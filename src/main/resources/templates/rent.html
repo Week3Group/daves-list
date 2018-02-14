@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<div th:if="${message1}" th:text="${message1}" th:class="${'alert ' + alertClass}"/>
 <div class="container">
     <table class="table" title="Rooms" >
         <thead>
@@ -29,8 +30,6 @@
             <td>
                 <a th:href="@{/detail/{id}(id=${room.id})}">Details</a>
             </td>
-
-               <td><a th:href="@{/rent/{id} (id=${room.id})}">Rent</a></td>
 
         </tr>
         </tbody>

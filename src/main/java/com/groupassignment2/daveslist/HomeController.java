@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -34,7 +35,7 @@ public class HomeController {
         }
 
         else{
-
+            room.setRented("No");
             roomRepository.save(room);
             System.out.println("success");
             return "redirect:/list";
@@ -45,7 +46,7 @@ public class HomeController {
     @RequestMapping("/list")
     public String listRooms(Model model){
         model.addAttribute("rooms",roomRepository.findAll());
-        return"/list";
+        return"list";
     }
 
     @RequestMapping("/detail/{id}")
@@ -58,5 +59,24 @@ public class HomeController {
     public String updateDetail(@PathVariable("id")Long id,Model model){
         model.addAttribute("room",roomRepository.findOne(id));
         return "add";
+    }
+
+    @RequestMapping("/rent/{id}")
+    public String rentRoom(@PathVariable("id") long id,Model model,RedirectAttributes redirectAttributes){
+        model.addAttribute("room",roomRepository.findOne(id));
+
+        Room room=roomRepository.findOne(id);
+
+        room.setRented("Yes");
+
+        String roomRentMessage="\""+room.getAddress()+"\""+" is rented";
+
+        redirectAttributes.addFlashAttribute("message1", roomRentMessage);
+
+System.out.println(roomRentMessage);
+
+        //model.addAttribute("room", roomRepository.findOne(id));
+        roomRepository.save(room);
+        return "rent";
     }
 }

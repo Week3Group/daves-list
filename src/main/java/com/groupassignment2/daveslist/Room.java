@@ -40,20 +40,20 @@ public class Room {
     @Size(min=10)
     private String rules;
 
-    @NotNull
+
     private String cable;
 
-    @NotNull
+
     private boolean wifi;
 
-    @NotNull
+
     private boolean privateBathroom;
 
-    @NotNull
-    private boolean rented;
+    private String rented;
 
     @URL
     private String image;
+
 
     public long getId() {
         return id;
@@ -135,11 +135,11 @@ public class Room {
         this.privateBathroom = privateBathroom;
     }
 
-    public boolean isRented() {
+    public String isRented() {
         return rented;
     }
 
-    public void setRented(boolean rented) {
+    public void setRented(String rented) {
         this.rented = rented;
     }
 

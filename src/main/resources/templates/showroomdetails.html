@@ -7,6 +7,8 @@
 
 </head>
 <body>
+<div th:if="${message1}" th:text="${message1}" th:class="${'alert ' + alertClass}"/>
+<!--<div th:if="${message2}" th:text="${message2}" th:class="${'alert ' + alertClass}"/>-->
 Address: <Span th:text="${room.address}"></Span><br />
 City: <Span th:text="${room.city}"></Span><br />
 State: <Span th:text="${room.state}"></Span><br />
@@ -16,5 +18,7 @@ Rules: <Span th:text="${room.rules}"></Span><br />
 Wifi: <Span th:text="${room.wifi}"></Span><br />
 Cable: <Span th:text="${room.cable}"></Span><br />
 Private Bathroom: <Span th:text="${room.privateBathroom}"></Span><br />
+<!--Rented: <Span th:text="${room.rented}"></Span>-->
+
 </body>
 </html>
