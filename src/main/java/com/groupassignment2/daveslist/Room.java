@@ -43,8 +43,13 @@ public class Room {
     @NotNull
     private String cable;
 
+    @NotNull
     private boolean wifi;
+
+    @NotNull
     private boolean privateBathroom;
+
+    @NotNull
     private boolean rented;
 
     @URL

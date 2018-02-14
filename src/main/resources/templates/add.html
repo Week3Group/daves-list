@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-
 </head>
 <body>
 <form action="#"
@@ -48,32 +47,43 @@
 
     <div class="col-3">
         <label id="labelWifi">Wifi</label>
-        <label class="radio-inline" id="radioWifiYes" th:field="*{wifi}">
-            <input type="radio" name="optradio">Yes
+        <label class="radio-inline" th:field="*{wifi}" id="radioWifiYes" >
+            <input type="radio"  name="wifiRadio" value="Yes"/>Yes
         </label>
-        <label class="radio-inline" id="radioWifiNo" th:field="*{wifi}">
-            <input type="radio" name="optradio">No
+        <label class="radio-inline" th:field="*{wifi}" id="radioWifiNo">
+            <input type="radio"  name="wifiRadio" value="No"/>No
         </label>
         <span th:if="${#fields.hasErrors('wifi')}" th:errors="*{wifi}"></span>
 
     </div>
 
-
+    <div class="col-3">
+        <label id="labelCable">Cable</label>
+        <Select th:field="*{cable}">
+            <option value="null" >    </option>
+            <option value="none" >None</option>
+            <option value="basic" >Basic</option>
+            <option value="premium" >Premium</option>
+        </Select>
+        <span th:if="${#fields.hasErrors('cable')}" th:errors="*{cable}"></span>
+    </div>
 
     <div class="col-3">
-        <label id="labelImage">Image</label>
-        <input type="file" name="file" />
-        <!--<input type="text" class="form-control" id="textimagePath" th:field="*{imagePath}" placeholder="Enter url or path"/><br />-->
+        <label id="labelPrivateBathroom">Private bath room</label>
+        <label class="radio-inline" id="radioPrivateBathroomYes" th:field="*{privateBathroom}">
+            <input type="radio" name="bathRoomRadio" value="Yes"/>Yes
+        </label>
+        <label class="radio-inline" id="radioPrivateBathroomNo" th:field="*{privateBathroom}">
+            <input type="radio" name="bathRoomRadio" value="No"/>No
+        </label>
+        <span th:if="${#fields.hasErrors('privateBathroom')}" th:errors="*{privateBathroom}"></span>
+
     </div>
-    <div class="col-3">
-        <input type="hidden" th:field="*{availability}" />
-    </div>
+
     <div class="col-3">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <!--
-      <input type="file" class="form-control-file" id="imageBook" th:field="*{image}"/>
-      <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span><br />-->
+
 </form>
 </body>
 </html>

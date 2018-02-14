@@ -28,11 +28,15 @@ public class HomeController {
     public String processRoom(@Valid @ModelAttribute("aRoom") Room room, BindingResult result){
         if(result.hasErrors())
         {
+            System.out.println("fail");
             return "add";
+
         }
 
         else{
+
             roomRepository.save(room);
+            System.out.println("success");
             return "redirect:/list";
         }
 
