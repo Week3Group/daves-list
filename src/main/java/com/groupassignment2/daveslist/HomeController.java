@@ -46,16 +46,14 @@ public class HomeController {
             e.printStackTrace();
             return "add";
         }
-        if(result.hasErrors())
-        {
-            System.out.println("fail");
+        if(result.hasErrors())        {
+
             return "add";
 
         }
         else{
             room.setRented("No");
             roomRepository.save(room);
-            System.out.println("success");
             return "redirect:/list";
         }
 
@@ -91,7 +89,21 @@ public class HomeController {
 
         redirectAttributes.addFlashAttribute("message1", roomRentMessage);
 
-System.out.println(roomRentMessage);
+        model.addAttribute("aRoom", roomRepository.findOne(id));
+        roomRepository.save(room);
+        return "redirect:/list";
+    }
+    @RequestMapping("/available/{id}")
+    public String availableRoom(@PathVariable("id") long id,Model model,RedirectAttributes redirectAttributes){
+        model.addAttribute("room",roomRepository.findOne(id));
+
+        Room room=roomRepository.findOne(id);
+
+        room.setRented("No");
+
+        String roomRentMessage="\""+room.getAddress()+"\""+" is available";
+
+        redirectAttributes.addFlashAttribute("message1", roomRentMessage);
 
         model.addAttribute("aRoom", roomRepository.findOne(id));
         roomRepository.save(room);
