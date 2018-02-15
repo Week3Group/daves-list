@@ -54,7 +54,7 @@
         <input type="text" class="form-control" id="textRules" th:field="*{rules}" placeholder="Enter rules"/>
         <span th:if="${#fields.hasErrors('rules')}" th:errors="*{rules}"></span>
     </div>
-
+    <br/>
     <div class="col-3">
         <label id="labelWifi">Wifi</label>
         <label class="radio-inline" th:field="*{wifi}" id="radioWifiYes" >
@@ -89,7 +89,11 @@
         <span th:if="${#fields.hasErrors('privateBathroom')}" th:errors="*{privateBathroom}"></span>
 
     </div>
-
+    <div class="col-3">
+        <label id="labelImage">Image</label>
+        <input type="file" name="file" />
+    </div>
+<br/>
     <div class="col-3">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

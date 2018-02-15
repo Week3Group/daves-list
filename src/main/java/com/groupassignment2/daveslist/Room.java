@@ -51,8 +51,26 @@ public class Room {
 
     private String rented;
 
-    @URL
-    private String image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    private byte[] image;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    private String imageUrl;
 
 
     public long getId() {
@@ -135,14 +153,6 @@ public class Room {
         this.privateBathroom = privateBathroom;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getRented() {
         return rented;
     }
@@ -150,4 +160,5 @@ public class Room {
     public void setRented(String rented) {
         this.rented = rented;
     }
+
 }

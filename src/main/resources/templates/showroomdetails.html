@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
-
+    <link href="/CSS/Stylesheet.css" rel="Stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
@@ -21,17 +21,30 @@
     </ul>
 </nav>
 
+<div class="container">
+    <h2>Room Detail</h2>
+    <div class="card">
+        <div class="card-body">
+            <div th:if="${room.imageUrl}!=null">
+                <img class="img-rounded" th:src="${room.imageUrl}" alt="Room" style="width:30%"/>
+                <hr/>
+            </div>
+            <b>Address:</b> <Span th:text="${room.address}"></Span><br />
+            <b>City:</b> <Span th:text="${room.city}"></Span><br />
+            <b>State:</b> <Span th:text="${room.state}"></Span><br />
+            <b>Price:</b> <Span th:text="${room.price}"></Span><br />
+            <b>Description:</b> <Span th:text="${room.description}"></Span><br />
+            <b>Rules:</b> <Span th:text="${room.rules}"></Span><br />
+            <b>Wifi: </b><Span th:text="${room.wifi}"></Span><br />
+            <b>Cable:</b> <Span th:text="${room.cable}"></Span><br />
+            <b>Private Bathroom:</b> <Span th:text="${room.privateBathroom}"></Span><br />
+            <b>Rented:</b> <Span th:text="${room.rented}"></Span><br />
+        </div>
+    </div>
+</div>
+
 <div th:if="${message1}" th:text="${message1}" th:class="${'alert ' + alertClass}"/>
 <!--<div th:if="${message2}" th:text="${message2}" th:class="${'alert ' + alertClass}"/>-->
-Address: <Span th:text="${room.address}"></Span><br />
-City: <Span th:text="${room.city}"></Span><br />
-State: <Span th:text="${room.state}"></Span><br />
-Price: <Span th:text="${room.price}"></Span><br />
-Description: <Span th:text="${room.description}"></Span><br />
-Rules: <Span th:text="${room.rules}"></Span><br />
-Wifi: <Span th:text="${room.wifi}"></Span><br />
-Cable: <Span th:text="${room.cable}"></Span><br />
-Private Bathroom: <Span th:text="${room.privateBathroom}"></Span><br />
-Rented: <Span th:text="${room.rented}"></Span><br />
+
 </body>
 </html>
