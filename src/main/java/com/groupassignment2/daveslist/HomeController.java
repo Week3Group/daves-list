@@ -21,12 +21,12 @@ public class HomeController {
 
     @GetMapping("/add")
     public String showAddRoomForm(Model model){
-        model.addAttribute("aRoom",new Room());
+        model.addAttribute("room",new Room());
         return"/add";
     }
 
     @PostMapping("/process")
-    public String processRoom(@Valid @ModelAttribute("aRoom") Room room, BindingResult result){
+    public String processRoom(@Valid @ModelAttribute("room") Room room, BindingResult result){
         if(result.hasErrors())
         {
             System.out.println("fail");
@@ -75,8 +75,8 @@ public class HomeController {
 
 System.out.println(roomRentMessage);
 
-        //model.addAttribute("room", roomRepository.findOne(id));
+        model.addAttribute("aRoom", roomRepository.findOne(id));
         roomRepository.save(room);
-        return "rent";
+        return "redirect:/list";
     }
 }

@@ -135,19 +135,19 @@ public class Room {
         this.privateBathroom = privateBathroom;
     }
 
-    public String isRented() {
-        return rented;
-    }
-
-    public void setRented(String rented) {
-        this.rented = rented;
-    }
-
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getRented() {
+        return rented;
+    }
+
+    public void setRented(String rented) {
+        this.rented = rented;
     }
 }

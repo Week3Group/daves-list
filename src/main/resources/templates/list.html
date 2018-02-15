@@ -15,6 +15,7 @@
             <th>City</th>
             <th>State</th>
             <th>Price</th>
+            <th>Rented</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
             <td th:text="${room.state}"></td>
 
             <td th:text="${room.price}"></td>
+            <td th:text="${room.rented}"></td>
             <td>
                 <a th:href="@{/detail/{id}(id=${room.id})}">Details</a>
             </td>
