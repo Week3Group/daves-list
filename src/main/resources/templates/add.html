@@ -93,6 +93,15 @@
 
     </div>
     <div class="col-3">
+        <label id="labelListType">Listing type</label>
+        <Select th:field="*{listType}">
+            <option value="Public" >Public</option>
+            <option value="Private" >Private</option>
+        </Select>
+        <span th:if="${#fields.hasErrors('listType')}" th:errors="*{listType}"></span>
+    </div>
+
+    <div class="col-3">
         <label id="labelImage">Image</label>
         <input type="file" name="file" />
     </div>

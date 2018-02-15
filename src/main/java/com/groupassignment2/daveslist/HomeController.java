@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Map;
@@ -24,15 +25,15 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
-
     @RequestMapping("/")
-    public String showIndex(Model model){
+    public String showIndex(HttpServletRequest request,Model model){
+        model.addAttribute("rooms",roomRepository.findAllByListTypeContainingIgnoreCase("Public"));
         return "index";
     }
 
     @RequestMapping("/login")
     public String login(){
-        return "list";
+        return "login";
     }
 
     @GetMapping("/add")
@@ -70,10 +71,16 @@ public class HomeController {
 
     @RequestMapping("/list")
     public String listRooms(Model model){
-        model.addAttribute("rooms",roomRepository.findAll());
+        //model.addAttribute("rooms",roomRepository.findAll());
+        model.addAttribute("rooms",roomRepository.findAllByListTypeContainingIgnoreCase("Private"));
         return"list";
     }
-
+    @RequestMapping("/currentlist")
+    public String currentListings(Model model){
+        model.addAttribute("rooms",roomRepository.findAll());
+        //model.addAttribute("rooms",roomRepository.findAllByListTypeContainingIgnoreCase("Private"));
+        return"currentlist";
+    }
     @RequestMapping("/detail/{id}")
     public String showDetail(@PathVariable("id")Long id,Model model){
         model.addAttribute("room",roomRepository.findOne(id));

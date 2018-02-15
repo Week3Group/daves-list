@@ -51,6 +51,7 @@ public class Room {
 
     private String rented;
 
+    private String listType;
 
     public byte[] getImage() {
         return image;
@@ -161,4 +162,11 @@ public class Room {
         this.rented = rented;
     }
 
+    public String getListType() {
+        return listType;
+    }
+
+    public void setListType(String listType) {
+        this.listType = listType;
+    }
 }
